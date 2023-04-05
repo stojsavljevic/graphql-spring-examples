@@ -8,7 +8,6 @@ target/
 .mvn/
 **/node_modules/
 **/apollo-frontend/build/
-**/apollo-frontend/public/
 
 ### STS ###
 .apt_generated
