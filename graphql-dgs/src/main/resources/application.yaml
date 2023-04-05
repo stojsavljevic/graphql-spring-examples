@@ -1,0 +1,10 @@
+dgs:
+  graphql:
+    schema-locations:
+    - classpath*:graphql/**/schema.graphqls
+    graphiql:
+      enabled: true
+
+logging:
+  level:
+    com.netflix: DEBUG

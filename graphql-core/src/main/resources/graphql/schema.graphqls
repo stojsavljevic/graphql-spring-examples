@@ -1,0 +1,51 @@
+# ====================================
+
+# Queries
+
+type Query {
+    allPosts: [Post]
+    allAuthors: [Author]
+}
+
+# ====================================
+
+# Mutations
+
+type Mutation {
+    createPost(postInput: PostInput!): Post
+}
+
+# ====================================
+
+# Subscriptions
+
+type Subscription {
+    randomPost: Post
+}
+
+# ====================================
+
+# Types
+
+type Post {
+	id: ID!
+    title: String
+    content: String
+    releaseYear: Int
+    author: Author
+}
+
+type Author {
+    name: String
+    email: String
+}
+
+# ====================================
+
+# Input Types
+
+input PostInput {
+    title: String!
+    content: String!
+    authorId: ID!
+}

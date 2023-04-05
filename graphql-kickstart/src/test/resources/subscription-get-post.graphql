@@ -1,0 +1,1 @@
+subscription Posts { randomPost { title, releaseYear } }

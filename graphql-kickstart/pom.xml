@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<artifactId>graphql-spring-examples</artifactId>
+		<groupId>alex.graphql</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	
+	<name>graphql-kickstart</name>
+	<artifactId>graphql-kickstart</artifactId>
+	
+	<properties>
+		<graphql-spring-boot-starter.version>15.0.0</graphql-spring-boot-starter.version>
+		<graphql-java-tools.version>13.0.3</graphql-java-tools.version>
+	</properties>
+	
+	<dependencies>
+		
+		<dependency>
+			<groupId>alex.graphql</groupId>
+			<artifactId>graphql-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<!-- GraphQL -->
+		<dependency>
+			<groupId>com.graphql-java-kickstart</groupId>
+			<artifactId>graphql-spring-boot-starter</artifactId>
+			<version>${graphql-spring-boot-starter.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.graphql-java-kickstart</groupId>
+			<artifactId>graphql-java-tools</artifactId>
+			<version>${graphql-java-tools.version}</version>
+		</dependency>
+		
+		<!-- Subscriptions -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+		
+		<!-- Test -->
+		<dependency>
+			<groupId>com.graphql-java-kickstart</groupId>
+			<artifactId>graphql-spring-boot-starter-test</artifactId>
+			<version>${graphql-spring-boot-starter.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>

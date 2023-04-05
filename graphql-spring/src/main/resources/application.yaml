@@ -1,0 +1,15 @@
+spring:
+  graphql:
+    websocket:
+      path: /subscriptions
+    cors:
+      allowed-origins:
+      - "*"
+    graphiql:
+      enabled: true
+    
+    
+logging:
+  level:
+    org.springframework.graphql: DEBUG
+    

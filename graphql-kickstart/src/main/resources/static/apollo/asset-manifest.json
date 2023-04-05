@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/apollo/static/js/main.3c0ba7fe.js",
+    "index.html": "/apollo/index.html",
+    "main.3c0ba7fe.js.map": "/apollo/static/js/main.3c0ba7fe.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.3c0ba7fe.js"
+  ]
+}

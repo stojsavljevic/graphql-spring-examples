@@ -1,0 +1,20 @@
+graphql:
+  servlet:
+    cors:
+      allowed-origins:
+      - "*"
+      allowed-methods:
+      - "*"
+      allowed-headers:
+      - "*"
+    async:
+      enabled: true
+  graphiql:
+    enabled: true
+  playground:
+    enabled: true
+  
+    
+logging:
+  level:
+    graphql.kickstart: DEBUG
