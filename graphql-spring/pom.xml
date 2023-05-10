@@ -1,47 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
-		<artifactId>graphql-spring-examples</artifactId>
-		<groupId>alex.graphql</groupId>
-		<version>1.0-SNAPSHOT</version>
+		<artifactId>alex-graphql-examples</artifactId>
+		<groupId>com.alex.graphql</groupId>
+		<version>1.3.0</version>
 	</parent>
-	
-	<name>graphql-spring</name>
+
 	<artifactId>graphql-spring</artifactId>
-	
+	<name>graphql-spring</name>
+	<description>Demo application with Spring GraphQL implemetation</description>
+
 	<dependencies>
-		
+
 		<dependency>
-			<groupId>alex.graphql</groupId>
+			<groupId>com.alex.graphql</groupId>
 			<artifactId>graphql-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		
+
 		<!-- GraphQL -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-graphql</artifactId>
 		</dependency>
-		
+
 		<!-- Subscriptions -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-websocket</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>org.springframework.graphql</groupId>
-		    <artifactId>spring-graphql-test</artifactId>
-		    <scope>test</scope>
+			<groupId>org.springframework.graphql</groupId>
+			<artifactId>spring-graphql-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>

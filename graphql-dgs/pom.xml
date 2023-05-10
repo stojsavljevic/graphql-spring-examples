@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
-		<artifactId>graphql-spring-examples</artifactId>
-		<groupId>alex.graphql</groupId>
-		<version>1.0-SNAPSHOT</version>
+		<artifactId>alex-graphql-examples</artifactId>
+		<groupId>com.alex.graphql</groupId>
+		<version>1.3.0</version>
 	</parent>
-	
-	<name>graphql-dgs</name>
+
 	<artifactId>graphql-dgs</artifactId>
-	
+	<name>graphql-dgs</name>
+	<description>Demo application with Netflix DGS GraphQL implemetation</description>
+
 	<properties>
 		<graphql-dgs-codegen-client-core.version>5.1.17</graphql-dgs-codegen-client-core.version>
 		<graphql-dgs-platform-dependencies.version>6.0.1</graphql-dgs-platform-dependencies.version>
 	</properties>
-	
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -27,21 +30,21 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 	<dependencies>
-		
+
 		<dependency>
-			<groupId>alex.graphql</groupId>
+			<groupId>com.alex.graphql</groupId>
 			<artifactId>graphql-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		
+
 		<!-- GraphQL -->
 		<dependency>
 			<groupId>com.netflix.graphql.dgs</groupId>
 			<artifactId>graphql-dgs-spring-boot-starter</artifactId>
 		</dependency>
-		
+
 		<!-- Subscriptions -->
 		<dependency>
 			<groupId>com.netflix.graphql.dgs</groupId>
@@ -51,21 +54,21 @@
 			<groupId>com.netflix.graphql.dgs</groupId>
 			<artifactId>graphql-dgs-subscriptions-sse-autoconfigure</artifactId>
 		</dependency>-->
-		
+
 		<!-- Code generator -->
 		<dependency>
 			<groupId>com.netflix.graphql.dgs.codegen</groupId>
 			<artifactId>graphql-dgs-codegen-client-core</artifactId>
 			<version>${graphql-dgs-codegen-client-core.version}</version>
 		</dependency>
-		
+
 		<!-- Test -->
 		<dependency>
 			<groupId>io.projectreactor</groupId>
 			<artifactId>reactor-test</artifactId>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
