@@ -16,7 +16,7 @@
 
 	<properties>
 		<graphql-spring-boot-starter.version>15.0.0</graphql-spring-boot-starter.version>
-		<graphql-java-tools.version>13.0.3</graphql-java-tools.version>
+		<graphql-java-tools.version>13.1.0</graphql-java-tools.version>
 	</properties>
 
 	<dependencies>
