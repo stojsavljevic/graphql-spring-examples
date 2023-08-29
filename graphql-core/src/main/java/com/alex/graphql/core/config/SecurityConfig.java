@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Profile("!no-security")
 @Configuration
@@ -25,13 +26,13 @@ public class SecurityConfig {
 		
 		http
 			.authorizeHttpRequests((requests) -> requests
-				.requestMatchers("/subscriptions", "/manifest.json").permitAll()
+				.requestMatchers(new AntPathRequestMatcher("/subscriptions"), new AntPathRequestMatcher("/manifest.json")).permitAll()
 				.anyRequest().authenticated()
 			)
 			.formLogin(withDefaults())
 			.cors(cors -> cors.disable())
 			.csrf(csrf -> csrf.disable());
-
+		
 		return http.build();
 	}
 	
