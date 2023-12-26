@@ -32,7 +32,7 @@ class GraphqlDgsApplicationTests {
 
 	@Test
 	void test_query_all_authors() {
-		List<String> authorNames = dgsQueryExecutor
+		List<String> authorNames = this.dgsQueryExecutor
 				.executeAndExtractJsonPath(TestQueries.QUERY_ALL_AUTHORS, TestQueries.JSON_PATH_ALL_AUTHOR_NAMES);
 
 		validateAuthorNames(authorNames);
@@ -40,7 +40,7 @@ class GraphqlDgsApplicationTests {
 	
 	@Test
 	void test_query_all_posts() {
-		List<String> titles = dgsQueryExecutor
+		List<String> titles = this.dgsQueryExecutor
 				.executeAndExtractJsonPath(TestQueries.QUERY_ALL_POSTS, TestQueries.JSON_PATH_ALL_POST_TITLES);
 
 		validatePostTitles(titles);
@@ -48,7 +48,7 @@ class GraphqlDgsApplicationTests {
 	
 	@Test
 	void test_create_post() {
-		Post post = dgsQueryExecutor
+		Post post = this.dgsQueryExecutor
 				.executeAndExtractJsonPathAsObject(TestQueries.MUTATION_CREATE_POST, TestQueries.JSON_PATH_CREATE_POST, Post.class);
 
 		validateNewPost(post);
@@ -56,7 +56,7 @@ class GraphqlDgsApplicationTests {
 	
 	@Test
 	void test_subscription() {
-		ExecutionResult executionResult = dgsQueryExecutor.execute(TestQueries.SUBSCRIPTION_GET_RANDOM_POST);
+		ExecutionResult executionResult = this.dgsQueryExecutor.execute(TestQueries.SUBSCRIPTION_GET_RANDOM_POST);
 		Publisher<ExecutionResult> publisher = executionResult.getData();
 
 		StepVerifier.withVirtualTime(() -> publisher, 1)
@@ -70,7 +70,7 @@ class GraphqlDgsApplicationTests {
 	@SuppressWarnings("unchecked")
 	private Post toPost(ExecutionResult result) {
 		Map<String, Object> data = (Map<String, Object>) result.getData();
-		return objectMapper.convertValue(data.get("randomPost"), Post.class);
+		return this.objectMapper.convertValue(data.get("randomPost"), Post.class);
 	}
 	
 	public static void validateAuthorNames(List<String> authorNames) {

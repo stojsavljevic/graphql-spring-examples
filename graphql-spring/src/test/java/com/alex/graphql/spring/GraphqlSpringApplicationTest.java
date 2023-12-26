@@ -10,7 +10,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.autoconfigure.graphql.tester.AutoConfigureHttpGraphQlTester;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.graphql.test.tester.GraphQlTester;
@@ -23,7 +22,6 @@ import com.alex.graphql.core.model.Post;
 import com.alex.graphql.core.util.TestQueries;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-@AutoConfigureHttpGraphQlTester
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ActiveProfiles("no-security")
 public class GraphqlSpringApplicationTest {
@@ -37,14 +35,14 @@ public class GraphqlSpringApplicationTest {
 	// testing with reactive client over websocket:
 	@BeforeAll
 	void setUp() {
-		this.graphQlTester = WebSocketGraphQlTester.builder(URI.create(baseUrl), new ReactorNettyWebSocketClient())
+		this.graphQlTester = WebSocketGraphQlTester.builder(URI.create(this.baseUrl), new ReactorNettyWebSocketClient())
 				.build();
 	}
 
 	@Test
 	void test_query_all_authors() throws Exception {
 
-		Response response = graphQlTester.document(TestQueries.QUERY_ALL_AUTHORS).execute();
+		Response response = this.graphQlTester.document(TestQueries.QUERY_ALL_AUTHORS).execute();
 		List<String> authorNames = response.path(TestQueries.JSON_PATH_ALL_AUTHOR_NAMES).entityList(String.class).get();
 
 		validateAuthorNames(authorNames);
@@ -53,7 +51,7 @@ public class GraphqlSpringApplicationTest {
 	@Test
 	void test_query_all_posts() throws Exception {
 
-		Response response = graphQlTester.document(TestQueries.QUERY_ALL_POSTS).execute();
+		Response response = this.graphQlTester.document(TestQueries.QUERY_ALL_POSTS).execute();
 		List<String> titles = response.path(TestQueries.JSON_PATH_ALL_POST_TITLES).entityList(String.class).get();
 
 		validatePostTitles(titles);
@@ -62,7 +60,7 @@ public class GraphqlSpringApplicationTest {
 	@Test
 	void test_create_post() {
 
-		Response response = graphQlTester.document(TestQueries.MUTATION_CREATE_POST).execute();
+		Response response = this.graphQlTester.document(TestQueries.MUTATION_CREATE_POST).execute();
 		Post post = response.path(TestQueries.JSON_PATH_CREATE_POST).entity(Post.class).get();
 		
 		validateNewPost(post);
@@ -71,7 +69,7 @@ public class GraphqlSpringApplicationTest {
 	@Test
 	void test_subscriptions() throws Exception {
 
-		Post post = graphQlTester.document(TestQueries.SUBSCRIPTION_GET_RANDOM_POST).executeSubscription()
+		Post post = this.graphQlTester.document(TestQueries.SUBSCRIPTION_GET_RANDOM_POST).executeSubscription()
 				.toFlux("randomPost", Post.class).blockFirst();
 
 		assertThat(post.getTitle()).isEqualTo(TestQueries.BOOK_1_TITLE);

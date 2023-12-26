@@ -24,7 +24,7 @@ import com.graphql.spring.boot.test.GraphQLTestTemplate;
 class GraphQLKickstartDemoTest {
 
 	@Autowired
-	private GraphQLTestTemplate graphQLTestTemplate;
+	GraphQLTestTemplate graphQLTestTemplate;
 
 	@Autowired
 	GraphQLTestSubscription graphQLTestSubscription;
@@ -32,7 +32,7 @@ class GraphQLKickstartDemoTest {
 	@Test
 	void test_query_all_authors() throws IOException {
 		
-		GraphQLResponse response = graphQLTestTemplate.postForString(TestQueries.QUERY_ALL_AUTHORS);
+		GraphQLResponse response = this.graphQLTestTemplate.postForString(TestQueries.QUERY_ALL_AUTHORS);
 		List<String> authorNames = response.getList(TestQueries.JSON_PATH_ALL_AUTHOR_NAMES, String.class);
 		
 		validateAuthorNames(authorNames);
@@ -41,7 +41,7 @@ class GraphQLKickstartDemoTest {
 	@Test
 	void test_query_all_posts() throws IOException {
 		
-		GraphQLResponse response = graphQLTestTemplate.postForString(TestQueries.QUERY_ALL_POSTS);
+		GraphQLResponse response = this.graphQLTestTemplate.postForString(TestQueries.QUERY_ALL_POSTS);
 		List<String> titles = response.getList(TestQueries.JSON_PATH_ALL_POST_TITLES, String.class);
 
 		validatePostTitles(titles);
@@ -50,7 +50,7 @@ class GraphQLKickstartDemoTest {
 	@Test
 	void test_create_post() throws IOException {
 		
-		GraphQLResponse response = graphQLTestTemplate.postForString(TestQueries.MUTATION_CREATE_POST);
+		GraphQLResponse response = this.graphQLTestTemplate.postForString(TestQueries.MUTATION_CREATE_POST);
 		Post post= response.get(TestQueries.JSON_PATH_CREATE_POST, Post.class);
 
 		validateNewPost(post);
@@ -60,7 +60,7 @@ class GraphQLKickstartDemoTest {
 	void test_subscription() {
 		
 	    final GraphQLResponse graphQLResponse =
-        graphQLTestSubscription
+	    	this.graphQLTestSubscription
             .init()
             .start("subscription-get-post.graphql")
             .awaitAndGetNextResponse(Duration.ofSeconds(5));
