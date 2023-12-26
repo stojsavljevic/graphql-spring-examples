@@ -1,5 +1,9 @@
 # GraphQL Java Kickstart
 
+
+**NOTE:**The GraphQL Java Kickstart project is archived and no longer maintained in favor of Spring for GraphQL.
+
+
 ## URLs
 
 * [Apollo client that uses deprecated graphql-ws protocol](http://localhost:8080/apollo/index.html)
