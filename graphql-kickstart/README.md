@@ -1,7 +1,7 @@
 # GraphQL Java Kickstart
 
 
-**NOTE:**The GraphQL Java Kickstart project is archived and no longer maintained in favor of Spring for GraphQL.
+**NOTE:** The GraphQL Java Kickstart project is archived and no longer maintained in favor of Spring for GraphQL.
 
 
 ## URLs
