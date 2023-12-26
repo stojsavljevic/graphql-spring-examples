@@ -6,4 +6,4 @@
 * [Integrated GraphiQL](http://localhost:8080/graphiql)
 
 ## Issues
-* SSE subscriptions will not be supported: [Github Issue](https://github.com/spring-projects/spring-graphql/issues/309).
+* SSE subscriptions still not supported: [Github Issue](https://github.com/spring-projects/spring-graphql/issues/309).
