@@ -1,6 +1,6 @@
 # GraphQL support in Spring  ![build status](https://github.com/stojsavljevic/graphql-spring-examples/actions/workflows/maven.yml/badge.svg)
 
-This project demonstrates 3 different Spring implementations of GraphQL protocol: [Netflix DGS](https://github.com/Netflix/dgs-framework), [Java Kickstart](https://github.com/graphql-java-kickstart/graphql-spring-boot) and [native Spring](https://github.com/spring-projects/spring-graphql). Every implementation is in its own module and they all share the same GraphQL schema and fetch data using common class. Security configuration is also the same. Every module is covered with integration tests.
+This project demonstrates 3 different Spring implementations of GraphQL protocol: [Netflix DGS](https://github.com/Netflix/dgs-framework), [Java Kickstart](https://github.com/graphql-java-kickstart/graphql-spring-boot) and [Spring for GraphQL](https://github.com/spring-projects/spring-graphql). Every implementation is in its own module and they all share the same GraphQL schema and fetch data using common class. Security configuration is also the same. Every module is covered with integration tests.
 
 It also has two [Apollo React](https://www.apollographql.com/docs/react) clients that uses different WebSocket implementations.
 
@@ -9,8 +9,8 @@ It also has two [Apollo React](https://www.apollographql.com/docs/react) clients
 
 * `graphql-core` library with common code and resources
 * `graphql-dgs` Netflix DGS module
-* `graphql-kickstart` Java Kickstart module
-* `graphql-spring` native Spring module
+* `graphql-kickstart` Java Kickstart module - DEPRECATED
+* `graphql-spring` Spring for GraphQL module
 
 ## Security
 

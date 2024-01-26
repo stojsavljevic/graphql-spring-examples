@@ -1,7 +1,7 @@
 # GraphQL Java Kickstart
 
 
-**NOTE:** The GraphQL Java Kickstart project is archived and no longer maintained in favor of Spring for GraphQL.
+**NOTE:** <mark>The GraphQL Java Kickstart project is archived and no longer maintained in favor of Spring for GraphQL.</mark>
 
 
 ## URLs
@@ -17,7 +17,7 @@
 	- Kickstart 14.1.0 with SB 2.7.8 handles it properly but needs additional configuration that is commented out in `SecurityConfig.java`. The same configuration doesn't work here - authentication is not found at all for subscriptions.
 * WebSocket subscriptions in Apollo v3 client from `graphql-core` don't work.
 	- `graphql-transport-ws` protocol not supported: [GitHub Issue](https://github.com/graphql-java-kickstart/graphql-java-servlet/issues/455).
-	- It has it's own Apollo client. The source is in `/src/main/apollo-frontend` and output is [this](http://localhost:8080/apollo/index.html) and it uses deprecated `subscriptions-transport-ws` library (`graphql-ws` protocol).
+	- It has it's own Apollo client. The source is in `/src/main/apollo-frontend` and it uses deprecated `subscriptions-transport-ws` library (`graphql-ws` protocol).
 * WebSocket subscriptions in both custom and integrated GraphiQL don't work well with security.
 
 ## SSE Subscriptions
