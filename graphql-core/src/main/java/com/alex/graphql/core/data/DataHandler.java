@@ -36,24 +36,18 @@ public class DataHandler {
         )
     );
 
-	private int nextPostId = -1;
+	int nextPostId = -1;
 
 	public List<Post> getAllPosts() {
 		return this.posts;
 	}
 	
 	public Post createPost(PostInput postInput) {
-		if(getAuthorById(postInput.getAuthorId()) == null) {
+		if(getAuthorById(postInput.authorId()) == null) {
 			throw new RuntimeException("Author doesn't exist");
 		}
 		
-		Post post = Post.builder()
-			.id(String.valueOf(this.posts.size()+1))
-			.authorId(postInput.getAuthorId())
-			.releaseYear(Year.now().getValue())
-			.content(postInput.getContent())
-			.title(postInput.getTitle())
-			.build();
+		Post post = new Post(String.valueOf(this.posts.size()+1), postInput.title(), postInput.content(), Year.now().getValue(), postInput.authorId());
 		this.posts.add(post);
 		return post;
 	}
@@ -77,7 +71,7 @@ public class DataHandler {
 	}
 
 	public Author getAuthorById(String authorId) {
-		Optional<Author> author = this.authors.stream().filter(a -> a.getId().equals(authorId)).findAny();
+		Optional<Author> author = this.authors.stream().filter(a -> a.id().equals(authorId)).findAny();
 		return author.get();
 	}
 

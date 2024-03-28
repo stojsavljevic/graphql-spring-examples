@@ -7,7 +7,7 @@
 	<parent>
 		<artifactId>alex-graphql-examples</artifactId>
 		<groupId>com.alex.graphql</groupId>
-		<version>1.3.2</version>
+		<version>1.3.3</version>
 	</parent>
 
 	<artifactId>graphql-kickstart</artifactId>
@@ -26,6 +26,12 @@
 			<artifactId>graphql-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		
+		<!--Servlet vs Reactive stack; disable to use Reactive but security and tests will not work-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 
 		<!-- GraphQL -->
 		<dependency>
@@ -38,7 +44,7 @@
 			<artifactId>graphql-java-tools</artifactId>
 			<version>${graphql-java-tools.version}</version>
 		</dependency>
-
+		
 		<!-- Subscriptions -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -47,6 +53,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-websocket</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-web</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<!-- Test -->

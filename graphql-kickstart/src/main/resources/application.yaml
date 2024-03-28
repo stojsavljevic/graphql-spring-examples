@@ -13,8 +13,7 @@ graphql:
     enabled: true
   playground:
     enabled: true
-  
-    
+
 logging:
   level:
     graphql.kickstart: DEBUG

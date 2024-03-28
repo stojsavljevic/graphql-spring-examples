@@ -58,7 +58,7 @@ public class DgsDatafetcher {
 	public Author author(DgsDataFetchingEnvironment dfe) {
 
 		Post post = dfe.getSource();
-		return dataHandler.getAuthorById(post.getAuthorId());
+		return dataHandler.getAuthorById(post.authorId());
 	}
 
 }

@@ -58,13 +58,12 @@ class GraphqlDgsApplicationTests {
 	void test_subscription() {
 		ExecutionResult executionResult = this.dgsQueryExecutor.execute(TestQueries.SUBSCRIPTION_GET_RANDOM_POST);
 		Publisher<ExecutionResult> publisher = executionResult.getData();
-
-		StepVerifier.withVirtualTime(() -> publisher, 1)
-			.expectSubscription().thenRequest(3)
-				.assertNext(result -> assertThat(toPost(result).getTitle()).isEqualTo(TestQueries.BOOK_1_TITLE))
-				.assertNext(result -> assertThat(toPost(result).getTitle()).isEqualTo(TestQueries.BOOK_2_TITLE))
-				.assertNext(result -> assertThat(toPost(result).getTitle()).isEqualTo(TestQueries.BOOK_3_TITLE)).thenCancel()
-			.verify();
+		
+		StepVerifier.create(publisher)
+	        .assertNext(result -> assertThat(toPost(result).title()).isEqualTo(TestQueries.BOOK_1_TITLE))
+	        .assertNext(result -> assertThat(toPost(result).title()).isEqualTo(TestQueries.BOOK_2_TITLE))
+	        .assertNext(result -> assertThat(toPost(result).title()).isEqualTo(TestQueries.BOOK_3_TITLE)).thenCancel()
+	    .verify();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -82,8 +81,8 @@ class GraphqlDgsApplicationTests {
 	}
 
 	public static void validateNewPost(Post post) {
-		assertThat(post.getTitle()).isEqualTo(TestQueries.NEW_POST_TITLE);
-		assertThat(post.getContent()).isEqualTo(TestQueries.NEW_POST_CONTENT);
-		assertThat(post.getReleaseYear()).isEqualTo(Year.now().getValue());
+		assertThat(post.title()).isEqualTo(TestQueries.NEW_POST_TITLE);
+		assertThat(post.content()).isEqualTo(TestQueries.NEW_POST_CONTENT);
+		assertThat(post.releaseYear()).isEqualTo(Year.now().getValue());
 	}
 }

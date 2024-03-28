@@ -7,7 +7,7 @@
 	<parent>
 		<artifactId>alex-graphql-examples</artifactId>
 		<groupId>com.alex.graphql</groupId>
-		<version>1.3.2</version>
+		<version>1.3.3</version>
 	</parent>
 
 	<artifactId>graphql-dgs</artifactId>
@@ -40,16 +40,25 @@
 		</dependency>
 
 		<!-- GraphQL -->
+		<!--Servlet stack-->
 		<dependency>
 			<groupId>com.netflix.graphql.dgs</groupId>
 			<artifactId>graphql-dgs-spring-boot-starter</artifactId>
 		</dependency>
-
+		
+		<!--Reactive stack-->
+		<!--<dependency>
+			<groupId>com.netflix.graphql.dgs</groupId>
+			<artifactId>graphql-dgs-webflux-starter</artifactId>
+		</dependency>-->
+		
 		<!-- Subscriptions -->
+		<!--Websocket on Servlet stack; Not needed for Reactive-->
 		<dependency>
 			<groupId>com.netflix.graphql.dgs</groupId>
 			<artifactId>graphql-dgs-subscriptions-websockets-autoconfigure</artifactId>
 		</dependency>
+		<!--SSE on Servlet stack; Doesn't work for Reactive-->
 		<!--<dependency>
 			<groupId>com.netflix.graphql.dgs</groupId>
 			<artifactId>graphql-dgs-subscriptions-sse-autoconfigure</artifactId>
@@ -60,6 +69,11 @@
 			<groupId>com.netflix.graphql.dgs.codegen</groupId>
 			<artifactId>graphql-dgs-codegen-client-core</artifactId>
 			<version>${graphql-dgs-codegen-client-core.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
 		</dependency>
 
 		<!-- Test -->

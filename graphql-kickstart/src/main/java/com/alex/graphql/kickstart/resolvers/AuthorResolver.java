@@ -23,6 +23,6 @@ public class AuthorResolver implements GraphQLResolver<Post> {
 	// security annotation here doesn't work for subscriptions some reason - check SecurityConfig.java and README
 	// @Secured("ROLE_USER")
 	public Author author(Post post, DataFetchingEnvironment dfe) {
-		return dataHandler.getAuthorById(post.getAuthorId());
+		return dataHandler.getAuthorById(post.authorId());
 	}
 }

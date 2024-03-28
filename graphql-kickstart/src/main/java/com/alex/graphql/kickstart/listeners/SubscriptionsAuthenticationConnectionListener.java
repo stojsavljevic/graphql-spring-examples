@@ -1,6 +1,5 @@
 package com.alex.graphql.kickstart.listeners;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,11 +17,9 @@ import org.springframework.stereotype.Component;
 import graphql.kickstart.execution.subscriptions.SubscriptionSession;
 import graphql.kickstart.execution.subscriptions.apollo.ApolloSubscriptionConnectionListener;
 import graphql.kickstart.execution.subscriptions.apollo.OperationMessage;
-import graphql.kickstart.servlet.apollo.ApolloWebSocketSubscriptionSession;
-import jakarta.websocket.server.HandshakeRequest;
 
 @Component
-class SubscriptionsAuthenticationConnectionListener implements ApolloSubscriptionConnectionListener {
+class SubscriptionsAuthenticationConnectionListener implements ApolloSubscriptionConnectionListener  {
 
 	Logger logger = LoggerFactory.getLogger(SubscriptionsAuthenticationConnectionListener.class);
 
@@ -41,20 +38,7 @@ class SubscriptionsAuthenticationConnectionListener implements ApolloSubscriptio
 			Authentication authentication = new UsernamePasswordAuthenticationToken(user, "password", authorities);
 
 			SecurityContextHolder.getContext().setAuthentication(authentication);
-		} else if (SecurityContextHolder.getContext().getAuthentication() == null) {
-			
-			Principal userPrincipal = getPrincipal(session);
-			if(userPrincipal  != null) {
-				SecurityContextHolder.getContext().setAuthentication((UsernamePasswordAuthenticationToken) userPrincipal);
-			}
-		}
+		} 
 	}
 	
-	Principal getPrincipal(SubscriptionSession session) {
-		
-		Map<String, Object> userProperties = ((ApolloWebSocketSubscriptionSession) session).getUserProperties();
-		HandshakeRequest request = (HandshakeRequest) userProperties
-				.get(HandshakeRequest.class.getName());
-		return request.getUserPrincipal();
-	}
 }

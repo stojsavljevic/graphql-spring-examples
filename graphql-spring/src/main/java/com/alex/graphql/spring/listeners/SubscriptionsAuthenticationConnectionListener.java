@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 @Component
-public class SubscriptionsAuthenticationConnectionListener implements WebSocketGraphQlInterceptor {
+class SubscriptionsAuthenticationConnectionListener implements WebSocketGraphQlInterceptor {
 	
 	Logger logger = LoggerFactory.getLogger(SubscriptionsAuthenticationConnectionListener.class);
 

@@ -56,7 +56,7 @@ class SpringController {
 	@SchemaMapping(typeName = "Post", field = "author")
 	public Author author(Post post) {
 
-		return this.dataHandler.getAuthorById(post.getAuthorId());
+		return this.dataHandler.getAuthorById(post.authorId());
 	}
 
 }

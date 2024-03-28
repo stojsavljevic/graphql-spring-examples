@@ -18,6 +18,10 @@
 * WebSocket subscriptions in Apollo v3 client from `graphql-core` don't work.
 	- `graphql-transport-ws` protocol not supported: [GitHub Issue](https://github.com/graphql-java-kickstart/graphql-java-servlet/issues/455).
 	- It has it's own Apollo client. The source is in `/src/main/apollo-frontend` and it uses deprecated `subscriptions-transport-ws` library (`graphql-ws` protocol).
+* Tests don't support sse subscriptions
+* Tests don't work on Reactive stack.
+* SSE don't work on Reactive stack.
+* WebSocket subscriptions in integrated GraphiQL don't work.
 * WebSocket subscriptions in both custom and integrated GraphiQL don't work well with security.
 
 ## SSE Subscriptions
@@ -32,3 +36,9 @@ curl --location --request POST 'http://localhost:8080/graphql' \
 --header 'Content-Type: application/json' \
 --data-raw '{"query":"subscription {\n  randomPost {\n    title\n    content\n    releaseYear\n    author {\n      name\n    }\n  }\n}","variables":{}}'
 ```
+
+## Reactive
+
+* Enable Reactive stack by commenting out `spring-boot-starter-web` dependency. Reactive security is not implemented so application has to be run with `no-security` profile.
+* Tests don't work because: `Caused by: java.lang.ClassNotFoundException: jakarta.websocket.Endpoint`
+

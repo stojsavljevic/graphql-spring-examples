@@ -57,16 +57,22 @@ class GraphQLKickstartDemoTest {
 	}
 	
 	@Test
+	// tests ws subscriptions; no support for sse subscriptions
 	void test_subscription() {
 		
-	    final GraphQLResponse graphQLResponse =
-	    	this.graphQLTestSubscription
+	   List<GraphQLResponse> graphQLResponse = this.graphQLTestSubscription
             .init()
             .start("subscription-get-post.graphql")
-            .awaitAndGetNextResponse(Duration.ofSeconds(5));
-	    
-	    Post post = graphQLResponse.get(TestQueries.JSON_PATH_RANDOM_POST, Post.class);
-	    assertThat(post.getTitle()).isEqualTo(TestQueries.BOOK_1_TITLE);
+            .awaitAndGetNextResponses(Duration.ofSeconds(10), 3);
+
+	   Post post = graphQLResponse.get(0).get(TestQueries.JSON_PATH_RANDOM_POST, Post.class);
+	   assertThat(post.title()).isEqualTo(TestQueries.BOOK_1_TITLE);
+	   
+	   post = graphQLResponse.get(1).get(TestQueries.JSON_PATH_RANDOM_POST, Post.class);
+	   assertThat(post.title()).isEqualTo(TestQueries.BOOK_2_TITLE);
+	   
+	   post = graphQLResponse.get(2).get(TestQueries.JSON_PATH_RANDOM_POST, Post.class);
+	   assertThat(post.title()).isEqualTo(TestQueries.BOOK_3_TITLE);
 	}
 	
 	public static void validateAuthorNames(List<String> authorNames) {
@@ -78,8 +84,8 @@ class GraphQLKickstartDemoTest {
 	}
 
 	public static void validateNewPost(Post post) {
-		assertThat(post.getTitle()).isEqualTo(TestQueries.NEW_POST_TITLE);
-		assertThat(post.getContent()).isEqualTo(TestQueries.NEW_POST_CONTENT);
-		assertThat(post.getReleaseYear()).isEqualTo(Year.now().getValue());
+		assertThat(post.title()).isEqualTo(TestQueries.NEW_POST_TITLE);
+		assertThat(post.content()).isEqualTo(TestQueries.NEW_POST_CONTENT);
+		assertThat(post.releaseYear()).isEqualTo(Year.now().getValue());
 	}
 }
