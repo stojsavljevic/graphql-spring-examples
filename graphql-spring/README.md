@@ -9,7 +9,7 @@
 * When using Servlet stack, closing client for SSE subscriptions causes exception every time subscription object was supposed to be emitted:
 
 ```
-java.lang.IllegalStateException: The response object has been recycled and is no longer associated with this facade
+org.springframework.web.context.request.async.AsyncRequestNotUsableException: Response not usable after response errors.
 ```
 * Testing SSE subscriptions (using `HttpGraphQlTester`) not supported:
 
@@ -17,7 +17,7 @@ java.lang.IllegalStateException: The response object has been recycled and is no
 java.lang.UnsupportedOperationException: Subscriptions not supported over HTTP
 ```
 * Full support for authentication via GraphQL over WebSocket "connect_init" message payload: [GitHub Issue](https://github.com/spring-projects/spring-graphql/issues/268)
-* WebSocket subscriptions in integrated GraphiQL don't work.
+
 
 ## SSE Subscriptions
 
